@@ -6,7 +6,7 @@ We will be using Github Desktop, which each of your should have installed.
 
 
 I have made a branch for each of you with your names on it. 
-##### Make sure this is the only branch you commit to!
+#### Make sure this is the only branch you commit to!
 
 Commit smaller changes to your branch often. Not only is it a log of what you have done, but it is something to look back to if something goes wrong or gets deleted. You can always revert what you have committed.
 

@@ -12,4 +12,4 @@ When you think your changes are stable (they work or at least dont cause errors)
 
 1. Make sure all of your changes are committed on your fork
 1. Sync once more to be sure
-1. 
+1. Under "Branch", select "Create Pull Request"

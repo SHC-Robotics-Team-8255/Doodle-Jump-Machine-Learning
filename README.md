@@ -12,4 +12,4 @@ When you think your changes are stable (they work or at least dont cause errors)
 1. Make sure all of your changes are committed on your fork
 1. Sync once more to be sure
 1. Under "Branch", select "Create Pull Request"
-1. blahblah
+1. Make sure the base repository is listed as "SHC-Robotics-Team-8255/Doodle-Jump" with base "main" and the head repository (your fork) is listed as "yourusername/Doodle-Jump-Machine-Learning" and comparing your main branch.

@@ -9,7 +9,6 @@ Commit smaller changes to your branch often. Not only is it a log of what you ha
 Don't forget to occasionally sync with Github servers by pressing the top right button that either reads Fetch, Push, or Pull Origin. Do this before and after you work on it.
 
 When you think your changes are stable (they work or at least dont cause errors) and want to share with the rest of the group, follow these steps:
-
 1. Make sure all of your changes are committed on your fork
 1. Sync once more to be sure
 1. Under "Branch", select "Create Pull Request"

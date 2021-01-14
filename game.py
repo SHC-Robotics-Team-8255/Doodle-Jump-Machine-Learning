@@ -6,6 +6,8 @@ from field import Field
 
 class Game:
     def __init__(self):
+        self.x = 7
+        self.y = 7
         self.base_field = Field()
         self.active_field = self.base_field.copy()
         pass

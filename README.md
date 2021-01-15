@@ -27,11 +27,10 @@ When you think your changes are stable (they work or at least dont cause errors)
 
 And you are done! Well, almost. Once I quickly check your code for any problems and merge it, you will probably want to get the latest version of code from the group repository.
 
-1. In GitHub Desktop, under Branch, select "Rebase Current Branch"
-1. Select the upstream/main branch (the group repo) and click "start rebase"
-1. This will import the changes from the group repo into your own, however, there may be a conflict.
-1. If so, Github will ask you to change it to how you want it to look. Once you finish, it will recognize that you solved the issue and allow you to continue.
-1. Congratulations, you are actually done. This may seem like a long list, but it should be able to be done very quick and allows for maximum flexibility
+1. In GitHub Desktop, under Branch, select "Compare to Branch"
+1. Under "Other Branches, select "upstream/main"
+1. At the bottom, click "Merge"
+1. Now all of the changes to the official repository will be reflected onto your repository.
 
 
 ### I have set everything up so that you guys dont have to worry about doing anything wrong. I'll merge your pull requests for you, so no need to worry about anything.

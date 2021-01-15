@@ -24,12 +24,14 @@ When you think your changes are stable (they work or at least dont cause errors)
 1. You are going to see an overview of all of the changes you have made. See if everything checks out, then select "Create Pull Request"
 1. Once you press that, give your pull request a descriptive name and a description that tells me everything one would need to know about your changes.
 1. At the top right, under Reviewers, click the gear icon. Enter my username, 22preich, and select it. Do not press merge.
+1. After it has been merged, under "Branch" select "Rebase this branch"
+1. Select the upstream branch and click through all the warnings.
 
 And you are done! Well, almost. Once I quickly check your code for any problems and merge it, you will probably want to get the latest version of code from the group repository.
 
 1. In GitHub Desktop, under Branch, select "Compare to Branch"
 1. Under "Other Branches, select "upstream/main"
-1. At the bottom, click "Merge"
+1. At the bottom, click "Merge into main"
 1. Now all of the changes to the official repository will be reflected onto your repository.
 
 

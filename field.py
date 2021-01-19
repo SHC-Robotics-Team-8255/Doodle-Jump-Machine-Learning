@@ -12,7 +12,7 @@ class Field:
 
     def update(self):  # main method/function
         if self.platform_needed:
-            generate_platform(self)
+            self.generate_platform()
             self.platform_needed = False
         
 
@@ -20,7 +20,7 @@ class Field:
         pass
 
     def generate_platform(self):
-        platform = np.rows(self.row_width)
+        platform = np.zeros(self.row_width)
         platform_start = random.randrange(0, self.row_width-self.platform_width)
         for i in range(platform_start, platform_start + self.platform_width):
             platform[i] = 3

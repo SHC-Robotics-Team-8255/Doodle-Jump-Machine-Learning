@@ -10,7 +10,17 @@ class Game:
         self.y = 7
         self.base_field = Field()
         self.active_field = self.base_field.copy()
-        pass
+
+if self.y <= 17:
+    score = 0
+elif self.y >= 18:
+    score = 1
+score = Score()
+
+if score == 0
+    print("Game Over")
+
+
 
     def _step(self, action):
         print(action)  # main function

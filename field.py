@@ -8,13 +8,13 @@ class Field:
         self.row_width = 12
         self.platform_width = 3
         self.platform_needed = True
-        pass  # placeholder
+        # placeholder
 
     def update(self):  # main method/function
         if self.platform_needed:
             generate_platform(self)
             self.platform_needed = False
-        pass
+        
 
     def generate_coin(self):
         pass

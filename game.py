@@ -8,8 +8,10 @@ class Game:
     def __init__(self):
         self.x = 7
         self.y = 7
+        self.is_going_up = True
         self.base_field = Field()
         self.active_field = self.base_field.copy()
+        self.active_field = np.zeros((12,20))
         pass
 
     def _step(self, action):
@@ -43,3 +45,16 @@ if __name__ == "__main__":
 
         game._step(int(go_right))
         game.render()
+
+self.active_field[6][7] = 3
+self.active_field[6][8] = 3
+self.active_field[6][9] = 3
+
+self.active_field[self.x][self.y] = 2
+
+if is_going_up == True 
+    for i in range(12):
+        x += 1
+    is_going_up = False
+    for i in range(12):
+        x -= 1

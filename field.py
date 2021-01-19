@@ -12,7 +12,7 @@ class Field:
 
     def update(self):  # main method/function
         if self.platform_needed:
-            generate_platform(self)
+            self.generate_platform()
             self.platform_needed = False
         
 

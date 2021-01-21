@@ -11,13 +11,13 @@ class Game:
         self.base_field = Field()
         self.active_field = self.base_field.copy()
 
-        if self.y <= 17:
+    def _step(self, action):
+        print(action)  # main function
+        
+     if self.y <= 17:
             print("Game Over")
         elif self.y >= 18:
             score = 1
-
-    def _step(self, action):
-        print(action)  # main function
 
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))

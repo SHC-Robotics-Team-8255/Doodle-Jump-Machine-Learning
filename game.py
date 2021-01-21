@@ -53,14 +53,14 @@ if __name__ == "__main__":
 
         self.active_field[self.x][self.y] = 2
 
-        if is_going_up == True 
+        if is_going_up:
             for i in range(12):
                 x += 1
             is_going_up = False
-        if is_going_up == False
-            if bump_platfom == True 
+        else:
+            if bump_platfom == True: 
                 is_going_up = True
-            else
+            else:
                 x -= 1
         
         if is_going_up == False and 5 in active_field:

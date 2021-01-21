@@ -12,15 +12,9 @@ class Game:
         self.active_field = self.base_field.copy()
 
 if self.y <= 17:
-    score = 0
-elif self.y >= 18:
-    score = 1
-score = Score()
-
-if score == 0
     print("Game Over")
-
-
+    elif self.y <= 18:
+        score = 1
 
     def _step(self, action):
         print(action)  # main function

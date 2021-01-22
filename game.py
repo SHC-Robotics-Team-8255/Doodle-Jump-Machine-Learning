@@ -13,8 +13,8 @@ class Game:
 
     def _step(self, action):
         print(action)  # main function
-        
-     if self.y <= 17:
+
+        if self.y <= 17:
             print("Game Over")
         elif self.y >= 18:
             score = 1

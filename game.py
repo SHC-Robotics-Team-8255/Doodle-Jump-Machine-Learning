@@ -17,10 +17,10 @@ class Game:
 
     def _step(self, action):
         print(action)  # main function
+        jump()
 
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
-    jump()
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "

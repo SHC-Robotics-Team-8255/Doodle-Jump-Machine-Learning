@@ -25,13 +25,27 @@ class Game:
     def _step(self, action):
         print(action)  # main function
 
-        if self.y <= 17:
+    if self.y <= 17:
             print("Game Over")
-        elif self.y >= 18:
-            score = 1
+     elif self.y >= 18:
+         return print(score + 1)
+            score = 0
 
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
+
+    def create_color(self, number):
+        if self.x(number, 0):
+            return (255, 255, 255)
+        elif self.x(number, 2):
+            return (255, 0, 0)
+        elif self.x(number, 3):
+            return (0, 0, 0)
+        elif self.x(number, 4):
+            return (255, 255, 0)
+        else: 
+            self.y = True
+            return print(self.y)
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "

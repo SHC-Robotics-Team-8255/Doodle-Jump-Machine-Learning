@@ -6,16 +6,24 @@ from field import Field
 
 class Game:
     def __init__(self):
+        self.x = 7
+        self.y = 7
+        self.is_going_up = True
+        self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
-        pass
+        self.active_field = np.zeros((12,20))
 
     def _step(self, action):
         print(action)  # main function
 
+        if self.y <= 17:
+            print("Game Over")
+        elif self.y >= 18:
+            score = 1
+
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
-
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "
@@ -41,3 +49,23 @@ if __name__ == "__main__":
 
         game._step(int(go_right))
         game.render()
+
+        self.active_field[6][7] = 3
+        self.active_field[6][8] = 3
+        self.active_field[6][9] = 3
+
+        self.active_field[self.x][self.y] = 2
+
+        if is_going_up:
+            for i in range(12):
+                x += 1
+            is_going_up = False
+        else:
+            if bump_platfom == True: 
+                is_going_up = True
+            else:
+                x -= 1
+        
+        if is_going_up == False and 5 in active_field:
+            bump_platform = True
+

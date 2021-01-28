@@ -20,15 +20,7 @@ class Game:
         if self.y <= 17:
             print("Game Over")
         elif self.y >= 18:
-            score = 1
-
-    def _step(self, action):
-        print(action)  # main function
-
-    if self.y <= 17:
-            print("Game Over")
-     elif self.y >= 18:
-         return print(score + 1)
+            return print(score + 1)
             score = 0
 
     def render(self):

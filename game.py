@@ -16,6 +16,7 @@ class Game:
 
     def _step(self, action):
         print(action)  # main function
+        jump()
 
         if self.y <= 17:
             print("Game Over")
@@ -38,6 +39,28 @@ class Game:
         else: 
             self.y = True
             return print(self.y)
+          
+           
+    def jump():
+        self.active_field[6][7] = 3
+        self.active_field[6][8] = 3
+        self.active_field[6][9] = 3
+  
+        self.active_field[self.x][self.y] = 2
+    
+        if is_going_up:
+            for i in range(12):
+                x += 1
+            is_going_up = False
+        else:
+            if bump_platfom == True: 
+                is_going_up = True
+            else:
+                x -= 1
+        
+        if is_going_up == False and 5 in active_field:
+            bump_platform = True
+
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "
@@ -63,23 +86,4 @@ if __name__ == "__main__":
 
         game._step(int(go_right))
         game.render()
-
-        self.active_field[6][7] = 3
-        self.active_field[6][8] = 3
-        self.active_field[6][9] = 3
-
-        self.active_field[self.x][self.y] = 2
-
-        if is_going_up:
-            for i in range(12):
-                x += 1
-            is_going_up = False
-        else:
-            if bump_platfom == True: 
-                is_going_up = True
-            else:
-                x -= 1
-        
-        if is_going_up == False and 5 in active_field:
-            bump_platform = True
-
+  

@@ -13,14 +13,54 @@ class Game:
         self.base_field = Field()
         self.active_field = self.base_field.copy()
         self.active_field = np.zeros((12,20))
-        pass
 
     def _step(self, action):
         print(action)  # main function
         jump()
 
+        if self.y <= 17:
+            print("Game Over")
+        elif self.y >= 18:
+            print(score + 1)
+            score = 0
+
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
+
+    def create_color(self, number):
+        if self.x(number, 0):
+            return (255, 255, 255)
+        elif self.x(number, 2):
+            return (255, 0, 0)
+        elif self.x(number, 3):
+            return (0, 0, 0)
+        elif self.x(number, 4):
+            return (255, 255, 0)
+        else: 
+            self.y = True
+            return print(self.y)
+          
+           
+    def jump():
+        self.active_field[6][7] = 3
+        self.active_field[6][8] = 3
+        self.active_field[6][9] = 3
+  
+        self.active_field[self.x][self.y] = 2
+    
+        if is_going_up:
+            for i in range(12):
+                x += 1
+            is_going_up = False
+        else:
+            if bump_platfom == True: 
+                is_going_up = True
+            else:
+                x -= 1
+        
+        if is_going_up == False and 5 in active_field:
+            bump_platform = True
+
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "
@@ -46,25 +86,4 @@ if __name__ == "__main__":
 
         game._step(int(go_right))
         game.render()
-
-        
-def jump():
-    self.active_field[6][7] = 3
-    self.active_field[6][8] = 3
-    self.active_field[6][9] = 3
-
-    self.active_field[self.x][self.y] = 2
-
-    if is_going_up:
-        for i in range(12):
-            x += 1
-        is_going_up = False
-    else:
-        if bump_platfom == True: 
-            is_going_up = True
-        else:
-            x -= 1
-    
-    if is_going_up == False and 5 in active_field:
-        bump_platform = True
-
+  

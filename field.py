@@ -65,11 +65,11 @@ class Field:
         return self.field.__repr__()
 
     def color(self, n):
-        if np.equal(n, 0)
+        if np.equal(n, 0):
             return (0, 0, 0)
-        if np.equal(n, 3)
+        if np.equal(n, 3):
             return (255, 255, 255)
-        if np.equal(n, 4)
+        if np.equal(n, 4):
             return (0, 255, 255)
         return (255, 0, 0)
         #at least i think this is red

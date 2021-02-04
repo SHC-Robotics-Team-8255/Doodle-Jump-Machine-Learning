@@ -46,7 +46,7 @@ class Game:
                 
         return render
 
-    def jump():
+    def jump(self):
         self.active_field[6][7] = 3
         self.active_field[6][8] = 3
         self.active_field[6][9] = 3

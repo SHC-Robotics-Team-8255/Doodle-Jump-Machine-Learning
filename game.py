@@ -12,7 +12,6 @@ class Game:
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
-        self.active_field = np.zeros((12,20))
 
     def _step(self, action):
         print(action)  # main function
@@ -40,7 +39,16 @@ class Game:
             self.y = True
             return print(self.y)
           
-           
+    def render(self):
+
+        render = np.zeros((20, 12, 3))
+
+        for row in range(len(self.render_field)):
+            for block in range(len(self.render_field[row])):
+                render[row][block] = list(self.create_color(self.active_field[row][block]))
+                
+        return render
+
     def jump():
         self.active_field[6][7] = 3
         self.active_field[6][8] = 3

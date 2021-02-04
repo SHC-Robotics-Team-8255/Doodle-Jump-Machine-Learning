@@ -12,7 +12,6 @@ class Game:
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
-        self.active_field = np.zeros((12,20))
 
     def _step(self, action):
         print(action)  # main function

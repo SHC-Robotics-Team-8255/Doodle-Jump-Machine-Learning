@@ -32,7 +32,8 @@ class Field:
         if self.platform_gap == 2:
             self.generate_platform()
             self.platform_gap-=1
-        else self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
+        else:
+            self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
         if self.coin_random:
             self.generate_coin()
         if self.platform_gap==0:

@@ -46,7 +46,7 @@ class Game:
 
         for row in range(len(self.render_field)):
             for block in range(len(self.render_field[row])):
-                rectangle = doodlejump.Rect(block * self.block_width, row * self.block_height, self.block_width, self.block_height)
+                render[row][block] = list(self.get_color(self.render_field[row][block]))
                 
         return render
 

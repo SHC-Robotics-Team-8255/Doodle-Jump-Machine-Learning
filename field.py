@@ -11,7 +11,7 @@ class Field:
         self.block_width = block_width
         self.block_height = block_height
 
-        self.field = np.zeros(1, dtype=int)
+        self.field = np.zeros((20, 12), dtype=int)
         self.row_width = 12
         self.col_height = 20
         self.platform_width = 3
@@ -32,9 +32,7 @@ class Field:
         if self.platform_gap == 2:
             self.generate_platform()
             self.platform_gap-=1
-        else 
-            self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
-
+        else self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
         if self.coin_random:
             self.generate_coin()
         if self.platform_gap==0:

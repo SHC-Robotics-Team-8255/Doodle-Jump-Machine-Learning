@@ -46,7 +46,7 @@ class Game:
 
         for row in range(len(self.render_field)):
             for block in range(len(self.render_field[row])):
-                render[row][block] = list(self.get_color(self.render_field[row][block]))
+                render[row][block] = list(self.create_color(self.active_field[row][block]))
                 
         return render
 

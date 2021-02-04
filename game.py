@@ -40,7 +40,16 @@ class Game:
             self.y = True
             return print(self.y)
           
-           
+    def render(self):
+
+        render = np.zeros((20, 12, 3))
+
+        for row in range(len(self.render_field)):
+            for block in range(len(self.render_field[row])):
+                rectangle = doodlejump.Rect(block * self.block_width, row * self.block_height, self.block_width, self.block_height)
+                
+        return render
+
     def jump():
         self.active_field[6][7] = 3
         self.active_field[6][8] = 3

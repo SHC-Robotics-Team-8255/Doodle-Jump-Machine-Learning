@@ -4,16 +4,15 @@ import random
 
 class Field:
 
-    def __init__(self, row_blocks, col_blocks, block_width, block_height):
-        self.row_width = row_blocks
-        self.col_height = col_blocks
-
-        self.block_width = block_width
-        self.block_height = block_height
-
-        self.field = np.zeros((20, 12), dtype=int)
+    def __init__(self):
         self.row_width = 12
         self.col_height = 20
+
+        self.block_width = 10
+        self.block_height = 10
+
+        self.field = np.zeros((self.col_height, self.row_width), dtype=int)
+        
         self.platform_width = 3
         self.platform_needed = True
         self.platform = self.generate_platform()

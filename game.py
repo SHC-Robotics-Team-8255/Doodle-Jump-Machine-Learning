@@ -23,9 +23,6 @@ class Game:
             print(score + 1)
             score = 0
 
-    def render(self):
-        cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
-
     def create_color(self, number):
         if self.x(number, 0):
             return (255, 255, 255)

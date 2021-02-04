@@ -21,7 +21,7 @@ class Field:
         self.platform_gap=2
         self.layers_left = self.layers_per_platform
 
-        self.total_width = self.block_width * row_width
+        self.total_width = self.block_width * self.row_width
         self.total_height = self.block_height * self.col_height
 
         pass  # placeholder

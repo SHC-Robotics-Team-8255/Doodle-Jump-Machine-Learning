@@ -15,7 +15,7 @@ class Game:
 
     def _step(self, action):
         print(action)  # main function
-        jump()
+        self.jump()
 
         if self.y <= 17:
             print("Game Over")

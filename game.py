@@ -53,17 +53,17 @@ class Game:
   
         self.active_field[self.x][self.y] = 2
     
-        if is_going_up:
+        if self.is_going_up:
             for i in range(12):
                 x += 1
-            is_going_up = False
+            self.is_going_up = False
         else:
             if self.bump_platform == True: 
-                is_going_up = True
+                self.is_going_up = True
             else:
                 x -= 1
         
-        if is_going_up == False and 5 in self.active_field:
+        if self.is_going_up == False and 5 in self.active_field:
             self.bump_platform = True
 
 

@@ -46,7 +46,7 @@ class Field:
         pass
 
     def generate_platform(self):
-        platform = np.rows(self.row_width)
+        platform = np.zeros(self.row_width)
         platform_start = random.randrange(0, self.row_width-self.platform_width)
         for i in range(platform_start, platform_start + self.platform_width):
             platform[i] = 3

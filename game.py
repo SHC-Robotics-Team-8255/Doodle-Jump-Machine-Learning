@@ -75,7 +75,7 @@ if __name__ == "__main__":
     num_frames_to_test = 10
     for i in range(num_frames_to_test):
 
-        cv2.imshow('game', np.zeros((400, 240)))
+        cv2.imshow('game', cv2.resize(game.render(), (240, 400), interpolation=cv2.INTER_NEAREST))
 
         key = cv2.waitKey(0)
         go_right = False
@@ -90,5 +90,4 @@ if __name__ == "__main__":
                 valid_key = True
 
         game._step(int(go_right))
-        game.render()
   

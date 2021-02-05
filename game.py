@@ -58,13 +58,13 @@ class Game:
                 x += 1
             is_going_up = False
         else:
-            if bump_platfom == True: 
+            if self.bump_platform == True: 
                 is_going_up = True
             else:
                 x -= 1
         
-        if is_going_up == False and 5 in active_field:
-            bump_platform = True
+        if is_going_up == False and 5 in self.active_field:
+            self.bump_platform = True
 
 
 if __name__ == "__main__":

@@ -13,9 +13,6 @@ class Game:
         self.base_field = Field()
         self.active_field = self.base_field.copy()
 
-        # messy workaround incoming
-        self.x = np.equal
-
     def _step(self, action):
         print(action)  # main function
         self.jump()

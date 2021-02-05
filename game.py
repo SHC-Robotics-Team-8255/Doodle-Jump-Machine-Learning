@@ -24,13 +24,13 @@ class Game:
             score = 0
 
     def create_color(self, number):
-        if self.x(number, 0):
+        if np.equal(number, 0):
             return (255, 255, 255)
-        elif self.x(number, 2):
+        elif np.equal(number, 2):
             return (255, 0, 0)
-        elif self.x(number, 3):
+        elif np.equal(number, 3):
             return (0, 0, 0)
-        elif self.x(number, 4):
+        elif np.equal(number, 4):
             return (255, 255, 0)
         else: 
             self.y = True

@@ -32,7 +32,7 @@ class Field:
         if self.platform_gap == 2:
             self.generate_platform()
             self.platform_gap-=1
-        else 
+        else: 
             self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
 
         if self.coin_random:
@@ -41,11 +41,40 @@ class Field:
             self.platform_gap = 2
         
     def coin_random(self):
-        #randomizer code here
-        return False
+        gen_coin = random.randint(1,20)
+        if gen_coin == 20:
+            return False
 
     def generate_coin(self):
-        pass
+        if self.generate_platform:
+            pass
+        else:
+            place_coin = random.randint(1,12)
+            if place_coin == 1:
+                self.field = np.insert(4,0,0,0,0,0,0,0,0,0,0,0)
+            if place_coin == 2:
+                pass
+            if place_coin == 3:
+                pass
+            if place_coin == 4:
+                pass
+            if place_coin == 5:
+                pass
+            if place_coin == 6:
+                pass
+            if place_coin == 7:
+                pass
+            if place_coin == 8:
+                pass
+            if place_coin == 9:
+                pass
+            if place_coin == 10:
+                pass
+            if place_coin == 11:
+                pass
+            if place_coin == 12:
+                pass 
+
 
     def generate_platform(self):
         platform = np.rows(self.row_width)
@@ -66,11 +95,11 @@ class Field:
         return self.field.__repr__()
 
     def color(self, n):
-        if np.equal(n, 0)
+        if np.equal(n, 0):
             return (0, 0, 0)
-        if np.equal(n, 3)
+        if np.equal(n, 3):
             return (255, 255, 255)
-        if np.equal(n, 4)
+        if np.equal(n, 4):
             return (0, 255, 255)
         return (255, 0, 0)
         #at least i think this is red

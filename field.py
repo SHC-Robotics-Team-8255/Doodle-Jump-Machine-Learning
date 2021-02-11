@@ -33,47 +33,30 @@ class Field:
             self.generate_platform()
             self.platform_gap-=1
         else: 
-            self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
+            if self.coin_random():
+                self.field = np.insert(self.field, 0, self.generate_coin(), 0)
+            else:
+                self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
 
-        if self.coin_random:
+        if self.coin_random():
             self.generate_coin()
         if self.platform_gap==0:
             self.platform_gap = 2
         
     def coin_random(self):
-        gen_coin = random.randint(1,20)
-        if gen_coin == 20:
-            return False
+        gen_coin = random.randint(1,5)
+        if gen_coin == 5:
+            return True
+        return False
 
     def generate_coin(self):
-        if self.generate_platform:
-            pass
-        else:
-            place_coin = random.randint(1,12)
-            if place_coin == 1:
-                self.field = np.insert(4,0,0,0,0,0,0,0,0,0,0,0)
-            if place_coin == 2:
-                pass
-            if place_coin == 3:
-                pass
-            if place_coin == 4:
-                pass
-            if place_coin == 5:
-                pass
-            if place_coin == 6:
-                pass
-            if place_coin == 7:
-                pass
-            if place_coin == 8:
-                pass
-            if place_coin == 9:
-                pass
-            if place_coin == 10:
-                pass
-            if place_coin == 11:
-                pass
-            if place_coin == 12:
-                pass 
+        new_row = np.zeros(self.row_width)
+        coin = random.randint(2,10)
+        new_row[coin]=4
+        return new_row
+
+
+           
 
 
     def generate_platform(self):

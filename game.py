@@ -12,16 +12,19 @@ class Game:
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
+        self.reward
 
     def _step(self, action):
         print(action)  # main function
         jump()
 
-        if self.y <= 17:
+        if self.y >= 19:
             print("Game Over")
-        elif self.y >= 18:
-            print(score + 1)
-            score = 0
+        else:
+            print(self.reward + 1)
+            self.base_field.update()
+            self.active_field = self.base_field.copy()
+            self.reward = 0
 
     def render(self):
         cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
@@ -43,16 +46,13 @@ class Game:
 
         render = np.zeros((20, 12, 3))
 
-        for row in range(len(self.render_field)):
-            for block in range(len(self.render_field[row])):
+        for row in range(len(self.active_field)):
+            for block in range(len(self.active_field[row])):
                 render[row][block] = list(self.create_color(self.active_field[row][block]))
                 
         return render
 
     def jump():
-        self.active_field[6][7] = 3
-        self.active_field[6][8] = 3
-        self.active_field[6][9] = 3
   
         self.active_field[self.x][self.y] = 2
     

@@ -26,17 +26,14 @@ class Game:
             self.active_field = self.base_field.copy()
             self.reward = 0
 
-    def render(self):
-        cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
-
     def create_color(self, number):
-        if self.x(number, 0):
+        if np.equal(number, 0):
             return (255, 255, 255)
-        elif self.x(number, 2):
+        elif np.equal(number, 2):
             return (255, 0, 0)
-        elif self.x(number, 3):
+        elif np.equal(number, 3):
             return (0, 0, 0)
-        elif self.x(number, 4):
+        elif np.equal(number, 4):
             return (255, 255, 0)
         else: 
             self.y = True
@@ -52,22 +49,22 @@ class Game:
                 
         return render
 
-    def jump():
+    def jump(self):
   
         self.active_field[self.x][self.y] = 2
     
-        if is_going_up:
+        if self.is_going_up:
             for i in range(12):
-                x += 1
-            is_going_up = False
+                self.x += 1
+            self.is_going_up = False
         else:
-            if bump_platfom == True: 
-                is_going_up = True
+            if self.bump_platform == True: 
+                self.is_going_up = True
             else:
-                x -= 1
+                self.x -= 1
         
-        if is_going_up == False and 5 in active_field:
-            bump_platform = True
+        if self.is_going_up == False and 5 in self.active_field:
+            self.bump_platform = True
 
 
 if __name__ == "__main__":
@@ -78,7 +75,7 @@ if __name__ == "__main__":
     num_frames_to_test = 10
     for i in range(num_frames_to_test):
 
-        cv2.imshow('game', np.zeros((400, 240)))
+        cv2.imshow('game', cv2.resize(game.render(), (240, 400), interpolation=cv2.INTER_NEAREST))
 
         key = cv2.waitKey(0)
         go_right = False
@@ -93,5 +90,4 @@ if __name__ == "__main__":
                 valid_key = True
 
         game._step(int(go_right))
-        game.render()
   

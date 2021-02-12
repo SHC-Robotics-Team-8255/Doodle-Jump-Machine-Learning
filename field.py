@@ -31,7 +31,7 @@ class Field:
         #put this all in an if statement of whether or not the player reached the 3rd to the top row?
         self.field = np.delete(self.field, 19, 0)
         if self.platform_gap == 2:
-            self.generate_platform()
+            self.field = np.insert(self.field, 0, self.generate_platform(), 0)
             self.platform_gap-=1
         else: 
             if self.coin_random():
@@ -54,12 +54,8 @@ class Field:
         new_row[coin]=4
         return new_row
 
-
-           
-
-
     def generate_platform(self):
-        platform = np.rows(self.row_width)
+        platform = np.zeros(self.row_width)
         platform_start = random.randrange(0, self.row_width-self.platform_width)
         for i in range(platform_start, platform_start + self.platform_width):
             platform[i] = 3

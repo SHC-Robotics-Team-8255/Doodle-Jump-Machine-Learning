@@ -4,6 +4,7 @@ import random
 
 class Field:
 
+
     def __init__(self):
         self.row_width = 12
         self.col_height = 20
@@ -20,6 +21,7 @@ class Field:
         self.platform_gap=2
         self.layers_left = self.layers_per_platform
 
+
         self.total_width = self.block_width * self.row_width
         self.total_height = self.block_height * self.col_height
 
@@ -31,22 +33,33 @@ class Field:
         if self.platform_gap == 2:
             self.generate_platform()
             self.platform_gap-=1
-        else:
-            self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
-        if self.coin_random:
-            self.generate_coin()
-        if self.platform_gap==0:
+        else: 
+            if self.coin_random():
+                self.field = np.insert(self.field, 0, self.generate_coin(), 0)
+            else:
+                self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
+
+        if self.platform_gap == 0:
             self.platform_gap = 2
         
     def coin_random(self):
-        #randomizer code here
+        gen_coin = random.randint(1,5)
+        if gen_coin == 5:
+            return True
         return False
 
     def generate_coin(self):
-        pass
+        new_row = np.zeros(self.row_width)
+        coin = random.randint(2,10)
+        new_row[coin]=4
+        return new_row
+
+
+           
+
 
     def generate_platform(self):
-        platform = np.zeros(self.row_width)
+        platform = np.rows(self.row_width)
         platform_start = random.randrange(0, self.row_width-self.platform_width)
         for i in range(platform_start, platform_start + self.platform_width):
             platform[i] = 3

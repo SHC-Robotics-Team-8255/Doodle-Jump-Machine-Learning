@@ -12,18 +12,60 @@ class Game:
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
-        self.active_field = np.zeros((12,20))
+        self.reward
 
     def _step(self, action):
         print(action)  # main function
+        self.jump()
 
-        if self.y <= 17:
+        if self.y >= 19:
             print("Game Over")
-        elif self.y >= 18:
-            score = 1
+        else:
+            print(self.reward + 1)
+            self.base_field.update()
+            self.active_field = self.base_field.copy()
+            self.reward = 0
 
+    def create_color(self, number):
+        if np.equal(number, 0):
+            return (255, 255, 255)
+        elif np.equal(number, 2):
+            return (255, 0, 0)
+        elif np.equal(number, 3):
+            return (0, 0, 0)
+        elif np.equal(number, 4):
+            return (255, 255, 0)
+        else: 
+            self.y = True
+            return print(self.y)
+          
     def render(self):
-        cv2.imshow('game', cv2.resize(self.active_field, (240, 400), interpolation=cv2.INTER_NEAREST))
+
+        render = np.zeros((20, 12, 3))
+
+        for row in range(len(self.active_field)):
+            for block in range(len(self.active_field[row])):
+                render[row][block] = list(self.create_color(self.active_field[row][block]))
+                
+        return render
+
+    def jump(self):
+  
+        self.active_field[self.x][self.y] = 2
+    
+        if self.is_going_up:
+            for i in range(12):
+                self.x += 1
+            self.is_going_up = False
+        else:
+            if self.bump_platform == True: 
+                self.is_going_up = True
+            else:
+                self.x -= 1
+        
+        if self.is_going_up == False and 5 in self.active_field:
+            self.bump_platform = True
+
 
 if __name__ == "__main__":
     print("This code will only be executed when this is the file being called, "
@@ -33,7 +75,7 @@ if __name__ == "__main__":
     num_frames_to_test = 10
     for i in range(num_frames_to_test):
 
-        cv2.imshow('game', np.zeros((400, 240)))
+        cv2.imshow('game', cv2.resize(game.render(), (240, 400), interpolation=cv2.INTER_NEAREST))
 
         key = cv2.waitKey(0)
         go_right = False
@@ -48,24 +90,4 @@ if __name__ == "__main__":
                 valid_key = True
 
         game._step(int(go_right))
-        game.render()
-
-        self.active_field[6][7] = 3
-        self.active_field[6][8] = 3
-        self.active_field[6][9] = 3
-
-        self.active_field[self.x][self.y] = 2
-
-        if is_going_up:
-            for i in range(12):
-                x += 1
-            is_going_up = False
-        else:
-            if bump_platfom == True: 
-                is_going_up = True
-            else:
-                x -= 1
-        
-        if is_going_up == False and 5 in active_field:
-            bump_platform = True
-
+  

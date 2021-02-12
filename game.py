@@ -12,16 +12,19 @@ class Game:
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
+        self.reward
 
     def _step(self, action):
         print(action)  # main function
         self.jump()
 
-        if self.y <= 17:
+        if self.y >= 19:
             print("Game Over")
-        elif self.y >= 18:
-            print(score + 1)
-            score = 0
+        else:
+            print(self.reward + 1)
+            self.base_field.update()
+            self.active_field = self.base_field.copy()
+            self.reward = 0
 
     def create_color(self, number):
         if np.equal(number, 0):
@@ -47,9 +50,6 @@ class Game:
         return render
 
     def jump(self):
-        self.active_field[6][7] = 3
-        self.active_field[6][8] = 3
-        self.active_field[6][9] = 3
   
         self.active_field[self.x][self.y] = 2
     

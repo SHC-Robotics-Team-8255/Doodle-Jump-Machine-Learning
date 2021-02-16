@@ -92,6 +92,6 @@ if __name__ == "__main__":
                 valid_key = True
 
         if game._step(int(go_right)):
-            break (self.y)
+            break
         
   

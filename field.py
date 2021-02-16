@@ -43,8 +43,8 @@ class Field:
             self.platform_gap = 2
         
     def coin_random(self):
-        gen_coin = random.randint(1,5)
-        if gen_coin == 5:
+        gen_coin = random.randint(1,20)
+        if gen_coin == 20:
             return True
         return False
 

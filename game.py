@@ -16,7 +16,6 @@ class Game:
 
     def _step(self, action):
         print(action)  # main function
-        self.jump()
 
         if self.y >= 19:
             print("Game Over")
@@ -24,6 +23,7 @@ class Game:
             print(self.reward + 1)
             self.base_field.update()
             self.active_field = self.base_field.copy()
+            self.jump()
             self.reward = 0
 
     def create_color(self, number):

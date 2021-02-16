@@ -91,9 +91,7 @@ if __name__ == "__main__":
                 go_right = True
                 valid_key = True
 
-        game._step(int(go_right))
-
-        if self.game_over = True
+        if game._step(int(go_right)) = True
             return (self.y)
         
   

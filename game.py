@@ -18,6 +18,7 @@ class Game:
         print(action)  # main function
 
         if self.y >= 19:
+            return False
             print("Game Over")
         else:
             print(self.reward + 1)
@@ -25,6 +26,7 @@ class Game:
             self.active_field = self.base_field.copy()
             self.jump()
             self.reward = 0
+            return True
 
     def create_color(self, number):
         if np.equal(number, 0):
@@ -34,7 +36,7 @@ class Game:
         elif np.equal(number, 3):
             return (0, 0, 0)
         elif np.equal(number, 4):
-            return (255, 255, 0)
+            return (0, 255, 255)
         else: 
             self.y = True
             return print(self.y)
@@ -55,13 +57,13 @@ class Game:
     
         if self.is_going_up:
             for i in range(12):
-                self.x += 1
+                self.x -= 1
             self.is_going_up = False
         else:
             if self.bump_platform == True: 
                 self.is_going_up = True
             else:
-                self.x -= 1
+                self.x += 1
         
         if self.is_going_up == False and 5 in self.active_field:
             self.bump_platform = True
@@ -89,5 +91,7 @@ if __name__ == "__main__":
                 go_right = True
                 valid_key = True
 
-        game._step(int(go_right))
+        if game._step(int(go_right)):
+            break
+        
   

@@ -57,13 +57,13 @@ class Game:
     
         if self.is_going_up:
             for i in range(12):
-                self.x += 1
+                self.x -= 1
             self.is_going_up = False
         else:
             if self.bump_platform == True: 
                 self.is_going_up = True
             else:
-                self.x -= 1
+                self.x += 1
         
         if self.is_going_up == False and 5 in self.active_field:
             self.bump_platform = True

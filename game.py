@@ -16,7 +16,7 @@ class Game:
         self.up_frame_left = 7
 
     def _step(self, action):
-        print(action, self.y)  # main function
+        print(action)  # main function
 
         if self.y >= 19:
             return False

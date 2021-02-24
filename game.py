@@ -26,6 +26,7 @@ class Game:
             self.base_field.update()
             self.active_field = self.base_field.copy()
             self.jump()
+            self.moving_sideways(action)
             self.reward = 0
             return True
 
@@ -70,6 +71,12 @@ class Game:
         
         if self.is_going_up == False and 5 in self.active_field:
             self.bump_platform = True
+
+    def moving_sideways(self,action):
+        if action == 1:
+            self.x -=1
+        if action == 0:
+            self.x +=1
 
 
 if __name__ == "__main__":

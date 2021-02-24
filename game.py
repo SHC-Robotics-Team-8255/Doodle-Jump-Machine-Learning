@@ -22,11 +22,11 @@ class Game:
             return False
             print("Game Over")
         else:
-            print(self.reward + 1)
+            #print(self.reward + 1)
             self.base_field.update()
             self.active_field = self.base_field.copy()
-            self.jump()
             self.moving_sideways(action)
+            self.jump()
             self.reward = 0
             return True
 
@@ -39,9 +39,8 @@ class Game:
             return (0, 0, 0)
         elif np.equal(number, 4):
             return (0, 255, 255)
-        else: 
-            self.y = True
-            return print(self.y)
+        else: # 5
+            return (0, 255, 0)
           
     def render(self):
 
@@ -55,28 +54,27 @@ class Game:
 
     def jump(self):
   
-        self.active_field[self.y][self.x] = 2
+        self.active_field[self.y][self.x] += 2
+
+        
+        
+        if self.is_going_up == False and 5 in self.active_field:
+            self.is_going_up = True
+            self.up_frame_left = 7
     
         if self.is_going_up:
             self.y -= 1
             self.up_frame_left -= 1
             if self.up_frame_left == 0:
                 self.is_going_up = False
-                self.up_frame_left = 7
         else:
-            if self.bump_platform == True: 
-                self.is_going_up = True
-            else:
-                self.y += 1
-        
-        if self.is_going_up == False and 5 in self.active_field:
-            self.bump_platform = True
+            self.y += 2
 
     def moving_sideways(self,action):
         if action == 1:
-            self.x -=1
-        if action == 0:
             self.x +=1
+        if action == 0:
+            self.x -=1
 
 
 if __name__ == "__main__":

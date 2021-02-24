@@ -55,8 +55,6 @@ class Game:
     def jump(self):
   
         self.active_field[self.y][self.x] += 2
-
-        
         
         if self.is_going_up == False and 5 in self.active_field:
             self.is_going_up = True

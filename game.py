@@ -68,9 +68,9 @@ class Game:
             self.bump_platform = True
 
     def moving_sideways(self,action):
-        if action.x == 1
+        if action == 1
             self.x -=1
-        if action.x == 0
+        if action == 0
             self.x +=1
 
 

@@ -16,7 +16,7 @@ class Game:
     def _step(self, action):
         print(action)  # main function
         self.jump()
-        self.moving_sideways()
+        self.moving_sideways(action)
 
         if self.y <= 17:
             print("Game Over")
@@ -67,10 +67,10 @@ class Game:
         if self.is_going_up == False and 5 in self.active_field:
             self.bump_platform = True
 
-    def moving_sideways(self):
-        if self.x == 1
+    def moving_sideways(self,action):
+        if action.x == 1
             self.x -=1
-        if self.x == 0
+        if action.x == 0
             self.x +=1
 
 

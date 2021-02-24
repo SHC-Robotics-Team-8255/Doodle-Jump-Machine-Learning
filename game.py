@@ -13,6 +13,7 @@ class Game:
         self.base_field = Field()
         self.active_field = self.base_field.copy()
         self.reward = 0
+        self.up_frame_left = 7
 
     def _step(self, action):
         print(action)  # main function
@@ -21,9 +22,10 @@ class Game:
             return False
             print("Game Over")
         else:
-            print(self.reward + 1)
+            #print(self.reward + 1)
             self.base_field.update()
             self.active_field = self.base_field.copy()
+            self.moving_sideways(action)
             self.jump()
             self.reward = 0
             return True
@@ -37,9 +39,8 @@ class Game:
             return (0, 0, 0)
         elif np.equal(number, 4):
             return (0, 255, 255)
-        else: 
-            self.y = True
-            return print(self.y)
+        else: # 5
+            return (0, 255, 0)
           
     def render(self):
 
@@ -53,20 +54,27 @@ class Game:
 
     def jump(self):
   
-        self.active_field[self.x][self.y] = 2
-    
-        if self.is_going_up:
-            for i in range(12):
-                self.x += 1
-            self.is_going_up = False
-        else:
-            if self.bump_platform == True: 
-                self.is_going_up = True
-            else:
-                self.x -= 1
+        self.active_field[self.y][self.x] += 2
+
+        
         
         if self.is_going_up == False and 5 in self.active_field:
-            self.bump_platform = True
+            self.is_going_up = True
+            self.up_frame_left = 7
+    
+        if self.is_going_up:
+            self.y -= 1
+            self.up_frame_left -= 1
+            if self.up_frame_left == 0:
+                self.is_going_up = False
+        else:
+            self.y += 2
+
+    def moving_sideways(self,action):
+        if action == 1:
+            self.x +=1
+        if action == 0:
+            self.x -=1
 
 
 if __name__ == "__main__":
@@ -74,7 +82,7 @@ if __name__ == "__main__":
           "like python/python3 game.py. Use this for testing")
     game = Game()
 
-    num_frames_to_test = 10
+    num_frames_to_test = 100
     for i in range(num_frames_to_test):
 
         cv2.imshow('game', cv2.resize(game.render(), (240, 400), interpolation=cv2.INTER_NEAREST))
@@ -91,7 +99,5 @@ if __name__ == "__main__":
                 go_right = True
                 valid_key = True
 
-        if game._step(int(go_right)):
+        if not game._step(int(go_right)):
             break
-        
-  

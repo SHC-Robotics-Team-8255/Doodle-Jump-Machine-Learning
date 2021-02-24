@@ -17,9 +17,8 @@ class Field:
         self.platform_width = 3
         self.platform_needed = True
         self.platform = self.generate_platform()
-        self.layers_per_platform = 2
-        self.platform_gap=2
-        self.layers_left = self.layers_per_platform
+        self.layers_per_platform = 4
+        self.platform_gap = self.layers_per_platform
 
 
         self.total_width = self.block_width * self.row_width
@@ -30,17 +29,18 @@ class Field:
     def update(self):  # main method/function
         #put this all in an if statement of whether or not the player reached the 3rd to the top row?
         self.field = np.delete(self.field, 19, 0)
-        if self.platform_gap == 2:
+        if self.platform_gap == self.layers_per_platform:
             self.field = np.insert(self.field, 0, self.generate_platform(), 0)
-            self.platform_gap-=1
         else: 
             if self.coin_random():
                 self.field = np.insert(self.field, 0, self.generate_coin(), 0)
             else:
                 self.field = np.insert(self.field, 0, np.zeros(self.row_width), 0)
 
+        self.platform_gap-=1
+
         if self.platform_gap == 0:
-            self.platform_gap = 2
+            self.platform_gap = self.layers_per_platform
         
     def coin_random(self):
         gen_coin = random.randint(1,20)

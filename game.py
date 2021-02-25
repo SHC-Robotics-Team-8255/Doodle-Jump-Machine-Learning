@@ -85,11 +85,11 @@ if __name__ == "__main__":
 
         cv2.imshow('game', cv2.resize(game.render(), (240, 400), interpolation=cv2.INTER_NEAREST))
 
-        key = cv2.waitKey(0)
         go_right = False
         valid_key = False
 
         while not valid_key:
+            key = cv2.waitKey(0)
             if key == ord('a'):
                 go_right = False
                 valid_key = True

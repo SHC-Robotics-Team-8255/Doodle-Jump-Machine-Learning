@@ -36,3 +36,6 @@ And you are done! Well, almost. Once I quickly check your code for any problems 
 
 
 ### I have set everything up so that you guys dont have to worry about doing anything wrong. I'll merge your pull requests for you, so no need to worry about anything.
+
+
+# Check out the actions tab

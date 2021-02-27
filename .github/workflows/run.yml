@@ -1,4 +1,4 @@
-name: Pylint
+name: Evaluate Python
 
 on:
   workflow_dispatch:

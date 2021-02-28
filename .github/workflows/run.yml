@@ -20,7 +20,7 @@ jobs:
           pip install -r requirements.txt
       - name: Running the code
         run: |
-          python main.py
+          python agent.py
       - uses: actions/upload-artifact@v2
         with:
           name: Results

@@ -2,6 +2,8 @@ from game import Game
 import os
 
 import tensorflow as tf
+import matplotlib
+import matplotlib.pyplot as plt
 
 from tf_agents.environments import utils
 from tf_agents.networks import q_network

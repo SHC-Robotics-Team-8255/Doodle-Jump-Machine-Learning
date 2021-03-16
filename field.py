@@ -12,7 +12,7 @@ class Field:
         self.block_width = 10
         self.block_height = 10
 
-        self.field = np.zeros((self.col_height, self.row_width), dtype=int)
+        self.field = np.zeros((self.col_height, self.row_width), dtype=np.int32)
         
         self.platform_width = 3
         self.platform_needed = True

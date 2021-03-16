@@ -3,9 +3,20 @@ import cv2
 
 from field import Field
 
+from tf_agents.environments import py_environment
+from tf_agents.specs import array_spec, tensor_spec
+from tf_agents.trajectories import time_step as ts
 
-class Game:
+class Game(py_environment.PyEnvironment):
     def __init__(self):
+
+        self._action_spec = array_spec.BoundedArraySpec(
+            shape=(), dtype=np.int32, minimum=0, maximum=1, name="action"
+        )
+        self._observation_spec = array_spec.BoundedArraySpec(
+            shape=(20, 12), dtype=np.int32, minimum=0, name="observation"
+        )
+
         self.x = 7
         self.y = 7
         self.is_going_up = True
@@ -15,11 +26,31 @@ class Game:
         self.reward = 0
         self.up_frame_left = 7
 
+    def action_spec(self):
+        return self._action_spec
+
+    def observation_spec(self):
+        return self._observation_spec
+
+    def _reset(self):
+        self._step_count = 0
+        self.frames = 0
+        self.is_going_up = True
+        self.up_frame_left = 7
+        self.x = 7
+        self.y = 7
+        self.field = Field()
+        self._episode_ended = False
+        self.active_field = self.field.copy()
+        self.active_field[self.y][self.x] += 2
+        self.reward = 0
+        return ts.restart(self.active_field)
+
     def _step(self, action):
-        print(action)  # main function
+        # print(action)  # main function
 
         if self.y >= 19:
-            return False
+            return ts.termination(self.active_field, -100)
             print("Game Over")
         else:
             #print(self.reward + 1)
@@ -28,7 +59,7 @@ class Game:
             self.moving_sideways(action)
             self.jump()
             self.reward = 0
-            return True
+        return ts.transition(self.active_field, 1, 1)
 
     def create_color(self, number):
         if np.equal(number, 0):
@@ -42,7 +73,7 @@ class Game:
         else: # 5
             return (0, 255, 0)
           
-    def render(self):
+    def render(self, *args):
 
         render = np.zeros((20, 12, 3))
 
@@ -70,9 +101,16 @@ class Game:
 
     def moving_sideways(self,action):
         if action == 1:
-            self.x +=1
+            self.x = min(11, self.x + 1)  # if x < 11: x += 1
         if action == 0:
-            self.x -=1
+            self.x = max(0, self.x - 1)
+            """
+            -2 | 0
+            -1 | 0
+            0 | 0
+            1 | 0
+            2 | 1
+            """
 
 
 if __name__ == "__main__":

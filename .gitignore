@@ -3,3 +3,4 @@ __pycache__/*
 *.iml
 .DS_Store
 *.pyc
+/policies/

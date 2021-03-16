@@ -1,3 +1,5 @@
 opencv-python
 numpy
-
+tensorflow
+tf_agents
+matplotlib

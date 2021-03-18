@@ -14,10 +14,10 @@ class Field:
 
         self.field = np.zeros((self.col_height, self.row_width), dtype=np.int32)
         
-        self.platform_width = 3
+        self.platform_width = 4
         self.platform_needed = True
         self.platform = self.generate_platform()
-        self.layers_per_platform = 4
+        self.layers_per_platform = 6
         self.platform_gap = self.layers_per_platform
 
 
@@ -56,7 +56,7 @@ class Field:
 
     def generate_platform(self):
         platform = np.zeros(self.row_width)
-        platform_start = random.randrange(0, self.row_width-self.platform_width)
+        platform_start = random.randrange(2, self.row_width-self.platform_width - 2)
         for i in range(platform_start, platform_start + self.platform_width):
             platform[i] = 3
 

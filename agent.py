@@ -4,6 +4,7 @@ import os
 import tensorflow as tf
 import matplotlib
 import matplotlib.pyplot as plt
+import imageio
 
 from tf_agents.environments import utils
 from tf_agents.networks import q_network
@@ -20,6 +21,10 @@ import cv2
 # with open("artifacts/artifact.txt", "w") as file:
 #    file.write("test123")
 
+try:
+    os.mkdir(os.path.join(os.getcwd(), "artifacts"))
+except FileExistsError:
+    pass
 
 def compute_avg_return(environment, policy, num_episodes=10):
     total_return = 0.0
@@ -143,6 +148,21 @@ if __name__ == "__main__":
                                       f'policies/epoch_run/policy_{round(step)}')
             tf_policy_saver.save(policy_dir)
 
+
+    def create_policy_eval_video(policy, filename, num_episodes=20, fps=12):
+        with imageio.get_writer(filename, fps=fps) as video:
+            for _ in range(num_episodes):
+                time_step = eval_env.reset()
+                video.append_data(cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
+                while not time_step.is_last():
+                    action_step = policy.action(time_step)
+                    time_step = eval_env.step(action_step.action)
+                    video.append_data(cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
+                    cv2.imshow('frame',
+                               cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
+                    cv2.waitKey(13)
+
+
     print(compute_avg_return(eval_env, random_policy, num_eval_episodes))
 
     iterations = range(0, num_iterations + 1, eval_interval)
@@ -150,5 +170,7 @@ if __name__ == "__main__":
     plt.ylabel('Average Return')
     plt.xlabel('Iterations')
     plt.show()
+
+    create_policy_eval_video(agent.policy, "artifacts/test.mp4")
 
     print("done")

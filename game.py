@@ -8,7 +8,7 @@ from tf_agents.specs import array_spec, tensor_spec
 from tf_agents.trajectories import time_step as ts
 
 class Game(py_environment.PyEnvironment):
-    def __init__(self):
+    def __init__(self, limit=True):
 
         self._action_spec = array_spec.BoundedArraySpec(
             shape=(), dtype=np.int32, minimum=0, maximum=1, name="action"
@@ -17,14 +17,19 @@ class Game(py_environment.PyEnvironment):
             shape=(20, 12), dtype=np.int32, minimum=0, name="observation"
         )
 
-        self.x = 7
-        self.y = 7
-        self.is_going_up = True
+        self.x = 6
+        self.y = 2
+        self.is_going_up = False
         self.bump_platform = False
         self.base_field = Field()
         self.active_field = self.base_field.copy()
         self.reward = 0
         self.up_frame_left = 7
+
+        self.frames = 0
+        self._step_count = 0
+        self._episode_ended = False
+        self.limit = limit
 
     def action_spec(self):
         return self._action_spec
@@ -35,10 +40,10 @@ class Game(py_environment.PyEnvironment):
     def _reset(self):
         self._step_count = 0
         self.frames = 0
-        self.is_going_up = True
+        self.is_going_up = False
         self.up_frame_left = 7
-        self.x = 7
-        self.y = 7
+        self.x = 6
+        self.y = 2
         self.field = Field()
         self._episode_ended = False
         self.active_field = self.field.copy()
@@ -49,17 +54,36 @@ class Game(py_environment.PyEnvironment):
     def _step(self, action):
         # print(action)  # main function
 
-        if self.y >= 19:
+        self.reward = 0
+
+        if self.limit and self._step_count > 10000:
+            self._episode_ended = True
+            reward = 100
+            return ts.termination(self.active_field, reward)
+
+        if self._episode_ended:
+            return self.reset()
+
+        self.frames += 1
+        self._step_count += 1
+        while self.frames <= 13:
+            self.base_field.update()
+            self.frames += 1
+
+        self.base_field.update()
+        self.active_field = self.base_field.copy()
+        self.moving_sideways(action)
+        self.jump()
+
+        if self.y <= 1:
+            self.is_going_up = False
+
+        if self.y >= 17:
+            self._episode_ended = True
             return ts.termination(self.active_field, -100)
             print("Game Over")
-        else:
-            #print(self.reward + 1)
-            self.base_field.update()
-            self.active_field = self.base_field.copy()
-            self.moving_sideways(action)
-            self.jump()
-            self.reward = 0
-        return ts.transition(self.active_field, 1, 1)
+        
+        return ts.transition(self.active_field, self.reward, 1)
 
     def create_color(self, number):
         if np.equal(number, 0):
@@ -87,9 +111,10 @@ class Game(py_environment.PyEnvironment):
   
         self.active_field[self.y][self.x] += 2
         
-        if self.is_going_up == False and 5 in self.active_field:
+        if 5 in self.active_field:
             self.is_going_up = True
             self.up_frame_left = 7
+            self.reward = 15
     
         if self.is_going_up:
             self.y -= 1

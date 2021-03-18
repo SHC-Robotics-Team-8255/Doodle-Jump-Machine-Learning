@@ -21,6 +21,10 @@ import cv2
 # with open("artifacts/artifact.txt", "w") as file:
 #    file.write("test123")
 
+try:
+    os.mkdir(os.path.join(os.getcwd(), "artifacts"))
+except FileExistsError:
+    pass
 
 def compute_avg_return(environment, policy, num_episodes=10):
     total_return = 0.0
@@ -167,6 +171,6 @@ if __name__ == "__main__":
     plt.xlabel('Iterations')
     plt.show()
 
-    create_policy_eval_video(agent.policy, "test.mp4")
+    create_policy_eval_video(agent.policy, "artifacts/test.mp4")
 
     print("done")

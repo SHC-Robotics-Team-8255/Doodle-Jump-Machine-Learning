@@ -7,3 +7,4 @@ tensorboard==2.3
 tf_agents
 matplotlib
 imageio
+imageio-ffmpeg

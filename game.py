@@ -77,6 +77,7 @@ class Game(py_environment.PyEnvironment):
 
         if self.y <= 1:
             self.is_going_up = False
+            self.reward += 10
 
         if self.y >= 17:
             self._episode_ended = True

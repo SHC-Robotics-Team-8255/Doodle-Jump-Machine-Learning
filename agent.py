@@ -158,9 +158,9 @@ if __name__ == "__main__":
                     action_step = policy.action(time_step)
                     time_step = eval_env.step(action_step.action)
                     video.append_data(cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
-                    cv2.imshow('frame',
-                               cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
-                    cv2.waitKey(13)
+
+                    # cv2.imshow('frame', cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
+                    # cv2.waitKey(13)
 
 
     print(compute_avg_return(eval_env, random_policy, num_eval_episodes))
@@ -169,7 +169,9 @@ if __name__ == "__main__":
     plt.plot(iterations, returns)
     plt.ylabel('Average Return')
     plt.xlabel('Iterations')
-    plt.show()
+    # plt.show()
+
+    create_policy_eval_video(agent.policy, "artifacts/test.mp4")
 
     create_policy_eval_video(agent.policy, "artifacts/test.mp4")
 

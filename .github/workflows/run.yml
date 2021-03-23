@@ -23,5 +23,10 @@ jobs:
           python agent.py
       - uses: actions/upload-artifact@v2
         with:
-          name: Results
+          name: Video
+          path: artifacts/test.mp4
+      - uses: actions/upload-artifact@v2
+        with:
+          name: All Results
           path: artifacts/
+

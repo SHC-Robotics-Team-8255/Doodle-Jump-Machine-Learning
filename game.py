@@ -54,7 +54,7 @@ class Game(py_environment.PyEnvironment):
     def _step(self, action):
         # print(action)  # main function
 
-        self.reward = 0
+        self.reward = 1
 
         if self.limit and self._step_count > 10000:
             self._episode_ended = True
@@ -115,10 +115,10 @@ class Game(py_environment.PyEnvironment):
         if 5 in self.active_field:
             self.is_going_up = True
             self.up_frame_left = 7
-            self.reward += 15
+            # self.reward += 15 7/10
 
         if 6 in self.active_field:
-            self.reward += 20
+            self.reward += 10
     
         if self.is_going_up:
             self.y -= 1

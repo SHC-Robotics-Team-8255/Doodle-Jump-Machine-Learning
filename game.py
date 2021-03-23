@@ -114,7 +114,10 @@ class Game(py_environment.PyEnvironment):
         if 5 in self.active_field:
             self.is_going_up = True
             self.up_frame_left = 7
-            self.reward = 15
+            self.reward += 15
+
+        if 6 in self.active_field:
+            self.reward += 20
     
         if self.is_going_up:
             self.y -= 1

@@ -118,7 +118,7 @@ class Game(py_environment.PyEnvironment):
             # self.reward += 15 7/10
 
         if 6 in self.active_field:
-            self.reward += 10
+            self.reward += 5
     
         if self.is_going_up:
             self.y -= 1

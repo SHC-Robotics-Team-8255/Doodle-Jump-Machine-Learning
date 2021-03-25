@@ -1,7 +1,8 @@
 name: Evaluate Machine Learning Python
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:

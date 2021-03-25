@@ -1,3 +1,10 @@
 opencv-python
 numpy
-
+tensorflow==2.3
+tensorflow-estimator==2.3
+tensorflow-probability==0.11
+tensorboard==2.3
+tf_agents
+matplotlib
+imageio
+imageio-ffmpeg

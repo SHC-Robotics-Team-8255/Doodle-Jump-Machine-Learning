@@ -22,7 +22,7 @@ def create_policy_eval_video(policy, filename, num_episodes=20, fps=12):
 
 
 
-saved_policy = tf.compat.v2.saved_model.load('policies/epoch_run/policy_90000')
+saved_policy = tf.compat.v2.saved_model.load('policies/epoch_run/policy_25000')
 time_step = eval_env.reset()
 #create_policy_eval_video(saved_policy, "final.mp4",  num_episodes=5, fps=12)
 #exit()

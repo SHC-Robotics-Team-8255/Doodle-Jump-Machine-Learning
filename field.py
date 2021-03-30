@@ -51,14 +51,14 @@ class Field:
     def generate_coin(self):
         new_row = np.zeros(self.row_width)
         coin = random.randint(2,10)
-        new_row[coin]=4
+        new_row[coin]=0
         return new_row
 
     def generate_platform(self):
         platform = np.zeros(self.row_width)
         platform_start = random.randrange(2, self.row_width-self.platform_width - 2)
         for i in range(platform_start, platform_start + self.platform_width):
-            platform[i] = 3
+            platform[i] = 1
 
         return platform
 

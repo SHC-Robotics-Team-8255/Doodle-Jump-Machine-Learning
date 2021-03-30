@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     fc_layer_params = (20, 12)
 
-    num_iterations = 100000  # @param {type:"integer"}
+    num_iterations = 50000  # @param {type:"integer"}
 
     initial_collect_steps = 200  # @param {type:"integer"}
     collect_steps_per_iteration = 1  # @param {type:"integer"}
@@ -162,8 +162,6 @@ if __name__ == "__main__":
                     # cv2.imshow('frame', cv2.resize(eval_env.render()[0].numpy(), (240, 400), interpolation=cv2.INTER_NEAREST))
                     # cv2.waitKey(13)
 
-
-    print(compute_avg_return(eval_env, random_policy, num_eval_episodes))
 
     iterations = range(0, num_iterations + 1, eval_interval)
     plt.plot(iterations, returns)

